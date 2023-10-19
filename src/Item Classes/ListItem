@@ -1,0 +1,16 @@
+/*
+Item Class for a sortable item used in a list
+*/
+
+class ListItem extends Item {
+  list;
+  listIndex;;
+
+  constructor(value) {
+    super(value);
+  }
+
+  position() {
+    return this.listIndex;
+  }
+}

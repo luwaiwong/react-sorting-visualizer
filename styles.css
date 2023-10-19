@@ -1,16 +1,16 @@
-*{
+* {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 13px;
 }
 
-html{
+html {
     background-image: linear-gradient(black, rgb(55, 55, 55));
     background-size: 100%;
     background-repeat: no-repeat;
 
 }
 
-body{
+body {
     color: white;
     margin-left: 0;
     margin-right: 0;
@@ -19,16 +19,16 @@ body{
 
 /* Header CSS */
 
-.header{
+.header {
     position: -webkit-sticky;
-    position:sticky;
+    position: sticky;
     top: 0;
     width: 100vw;
     background-color: black;
 
 }
 
-.headerContent{
+.headerContent {
     display: flex;
     justify-content: center;
     /* Center doesnt work rn bc of the margin-right auto there so will need to fix later */
@@ -37,82 +37,92 @@ body{
     margin: 0 2rem;
 }
 
-    /* Site Name CSS */
+/* Site Name CSS */
 
-#siteName{
+#siteName {
     position: absolute;
     font-weight: bold;
     list-style: none;
     cursor: pointer;
     left: 2vw;
 }
-#siteName a{
+
+#siteName a {
     text-decoration: none;
     color: white;
 }
-#siteName a:hover{
+
+#siteName a:hover {
     color: aqua;
 }
 
-    /* Positioning and CSS for Menu Elements */
+/* Positioning and CSS for Menu Elements */
 
-.navElem{
+.navElem {
     list-style: none;
     font-weight: bold;
     position: relative;
     padding: 1.5rem 1rem;
     cursor: pointer;
 }
-.navElem a{
+
+.navElem a {
     text-decoration: none;
     color: white;
 }
-    /* Drop Down Menu Stuff */
 
-.navElem:hover > .dropContent, .dropContent > .navElem:hover > .dropContent{
+/* Drop Down Menu Stuff */
+
+.navElem:hover>.dropContent,
+.dropContent>.navElem:hover>.dropContent {
     opacity: 1;
     visibility: visible;
 }
-.dropContent{
+
+.dropContent {
     opacity: 0;
     visibility: hidden;
     transition: opacity 200ms ease-in-out;
 
     position: absolute;
-    width:12rem;
+    width: 12rem;
     padding: 1rem 0;
     background-color: #343434;
     border-radius: 1rem;
     border: 0.2rem solid #414141;
-    
+
     display: flex;
     flex-direction: column;
     column-gap: 0.5rem;
 
 }
-.dropContent li{
+
+.dropContent li {
     list-style: none;
     padding: 1rem 1rem;
     transition: background-color 200ms ease-in-out;
 }
-.dropContent li:hover, .dropContent li:focus{
+
+.dropContent li:hover,
+.dropContent li:focus {
     background-color: #414141;
 }
 
-    /* Individual Drop Downs */
+/* Individual Drop Downs */
 
-#visualizations{
-    top:3rem;
-    left:-0.5rem;
-}
-#sorting{
-    top:1.2rem;
-    left:12rem;
+#visualizations {
+    top: 3rem;
+    left: -0.5rem;
 }
 
-    /* Search Bar */
+#sorting {
+    top: 1.2rem;
+    left: 12rem;
+}
 
-#navSearch{
+/* Search Bar */
+
+#navSearch {
     width: 10rem;
     border: 0;
     outline: 0;
@@ -122,28 +132,35 @@ body{
     transition: width 300ms ease-in-out;
 }
 
-#navSearch:focus{
+#navSearch:focus {
     width: 20rem;
 }
 
 
+/* Canvas Display */
+.canvas {
+    background: black;
+}
 
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.text{
-    display:block;
+.text {
+    display: block;
     white-space: normal;
     padding: 16px;
     margin-bottom: 500rem;
 }
 
-.sticky{
+.sticky {
     position: fixed;
     top: 0;
     width: 100%
 }
 
-.sticky + .content{
+.sticky+.content {
     padding-top: 102px;
 }
-
-
