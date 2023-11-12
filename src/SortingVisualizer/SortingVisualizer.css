@@ -1,0 +1,18 @@
+/* FILEPATH: /home/lu-wai/Documents/Projects/Sorting-Algorithms-Visualizer/sorting-visualizer/src/SortingVisualizer/SortingVisualizer.css */
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set up basic styles for the sorting visualizer container */
+.sorting-visualizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
