@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import './SortingVisualizer.css';
 
 
-const NUMBER_OF_ARRAY_BARS = 310;
+const NUMBER_OF_ARRAY_BARS = 100;
+const MIN_HEIGHT = 50;
+const MAX_HEIGHT = 1000;
 
 
 function randomIntFromInterval(min, max) {
@@ -11,13 +14,12 @@ function randomIntFromInterval(min, max) {
 const generateRandomArray = () => {
     let n = [];
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-        n.push(randomIntFromInterval(5, 730));
+        n.push(randomIntFromInterval(MIN_HEIGHT, MAX_HEIGHT));
     }
     return n
 };
 
 function SortingVisualizer() {
-
 
 
     const [array, setArray] = useState(generateRandomArray());
@@ -28,14 +30,29 @@ function SortingVisualizer() {
     }
 
     return (
-        <div>
+        <div >
             <button onClick={resetArray}>Generate New Array</button>
-            {
-                array.map((value, idx) => (
-                    <div>{value}</div>
 
-                ))
-            }
+            <div style={{ height: '100px' }}></div>
+
+            <div className='flexbox'>
+                {/* Sorting Algorithm Array Display */}
+                <div className='array-container'>
+                    {
+                        array.map((value, idx) => (
+                            <div
+                                className='array-bar'
+                                key={idx}
+                                style={{
+                                    height: (value / MAX_HEIGHT) * 100 + '%',
+                                    width: (1 / NUMBER_OF_ARRAY_BARS) * 100 + '%',
+                                }}>
+                            </div>
+
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     )
 }

@@ -7,12 +7,35 @@
     box-sizing: border-box;
 }
 
-/* Set up basic styles for the sorting visualizer container */
-.sorting-visualizer {
+/* Default Flexbox */
+.flexbox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+}
+
+/* Sorting Algorithm Display Area */
+/* Container for array bars*/
+.array-container {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    height: 500px;
+    width: 80vw;
+    background-color: lightblue;
+}
+
+/* Individual array bars */
+.array-bar {
+    /* height: 100%; */
+    width: 50px;
+    margin: 0 1px;
+    display: inline-block;
+    background-color: #1a1a1a;
+}
+
+.array-bar:hover {
+    background-color: #ff0000;
 }
