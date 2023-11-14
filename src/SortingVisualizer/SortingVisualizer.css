@@ -33,9 +33,5 @@
     width: 50px;
     margin: 0 1px;
     display: inline-block;
-    background-color: #1a1a1a;
-}
-
-.array-bar:hover {
-    background-color: #ff0000;
+    background-color: black;
 }
