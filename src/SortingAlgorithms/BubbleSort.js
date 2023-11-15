@@ -1,5 +1,5 @@
 import Item from "./Item";
-import { arraySpeed } from "../SortingVisualizer/SortingVisualizer";
+import { arraySpeed, finishSort } from "../SortingVisualizer/SortingVisualizer";
 
 export default async function bubblesort(array, setArray) {
   let sorted = array;
@@ -32,5 +32,7 @@ export default async function bubblesort(array, setArray) {
       sorted[j].resetColor();
     }
   }
+
+  finishSort(array, setArray);
   return sorted;
 }
