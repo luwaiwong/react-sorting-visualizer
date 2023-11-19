@@ -1,8 +1,9 @@
 import Item from "./Item";
 import { arraySpeed, finishSort } from "../SortingVisualizer/SortingVisualizer";
 
-export default async function bubblesort(array, setArray) {
+export default async function bubblesort(array, functions) {
   let sorted = array;
+  let setArray = functions.setArray;
   for (let i = 0; i < sorted.length; i++) {
     for (let j = 1; j < sorted.length - i; j++) {
       // Set colors
@@ -15,7 +16,6 @@ export default async function bubblesort(array, setArray) {
         sorted[j] = temp;
 
         // Set colors
-        sorted[j - 1].wasSwapped();
         sorted[j].wasSwapped();
 
         // Set array in main component
@@ -33,6 +33,6 @@ export default async function bubblesort(array, setArray) {
     }
   }
 
-  finishSort(array, setArray);
+  finishSort(array, functions);
   return sorted;
 }

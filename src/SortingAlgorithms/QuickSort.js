@@ -6,9 +6,9 @@ import { arraySpeed, finishSort } from "../SortingVisualizer/SortingVisualizer";
 // Space Complexity: O(logn) average, O(n) worst case
 
 // The main function that implements QuickSort
-export default async function QuickSort(array, setArray) {
-  await partition(array, 0, array.length - 1, setArray);
-  finishSort(array, setArray);
+export default async function QuickSort(array, functions) {
+  await partition(array, 0, array.length - 1, functions.setArray);
+  finishSort(array, functions);
 }
 
 async function partition(array, left, right, setArray) {

@@ -6,16 +6,17 @@ import Item from '../SortingAlgorithms/Item';
 // Sorting Algorithms
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import QuickSort from '../SortingAlgorithms/QuickSort';
+import MergeSort from '../SortingAlgorithms/MergeSort';
 
 // Constants
-const NUMBER_OF_ARRAY_BARS = 20;
+const NUMBER_OF_ARRAY_BARS = 50;
 const MIN_HEIGHT = 50;
 const MAX_HEIGHT = 1000;
-export const arraySpeed = 105;
+export const arraySpeed = 100;
 
 // Variables
 let sorted = false;
-let sorting = false;
+
 
 //#region Generating random lists
 function randomIntFromInterval(min, max) {
@@ -45,6 +46,7 @@ const randomizeArray = (array) => {
         let randomIndex = randomIntFromInterval(0, array.length - 1);
         [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
     }
+    console.log("randomize")
     return array
 };
 
@@ -54,15 +56,14 @@ const generateRandomSymetricArray = () => {
 
 //#endregion
 
-export async function finishSort(array, setArray) {
-    sorting = false;
+export async function finishSort(array, functions) {
     for (let i = 0; i < array.length; i++) {
         array[i].resetColor();
     }
-    setArray([...array]);
+    functions.setArray([...array]);
     for (let i = 0; i < array.length; i++) {
         array[i].wasSwapped();
-        setArray([...array]);
+        functions.setArray([...array]);
         // Wait Timer
         await new Promise((resolve) =>
         setTimeout(() => {
@@ -70,38 +71,61 @@ export async function finishSort(array, setArray) {
         }, arraySpeed)
         );
     }
+    functions.setSorting(false);
+    functions.setSorted(true);
 }
 //#region Main Function
 function SortingVisualizer() {
-    const [array, setArray] = useState(generateRandomSymetricArray());
-    
+    const [array, setArray] = useState(generateArray);
+    const [sorting, setSorting] = useState(false);
+    const [sorted, setSorted] = useState(true);
+    const functions = { setArray, setSorting, setSorted};
 
     const resetArray = () => {
         if (sorting) return;
-        sorted = false;
-        setArray([...generateRandomSymetricArray()]);
 
+        setSorted(false);
+        let a = generateRandomSymetricArray();
+        setArray([a]);
+        return a;
     }
 
-    const quickSort = () => {
+    const quickSort = () =>  {
+        console.log(sorting, sorted)
         if (sorting) return;
-        sorting = true;
+        
         if (sorted) {
-            console.log("reset");
-            resetArray();
+            QuickSort(resetArray(), functions);
+        } else {
+            QuickSort(array, functions);
         }
-        sorted = true;
-        QuickSort(array, setArray);
+        
+        setSorting(true);
     }
 
     const bubbleSort = () => {
+        console.log(sorting, sorted)
         if (sorting) return;
-        sorting = true;
+        
         if (sorted) {
-            resetArray();
+            BubbleSort(resetArray(), functions);
         }
-        sorted = true;
-        BubbleSort(array, setArray);
+        else {
+            BubbleSort(array, functions);
+        }
+        setSorting(true);
+    }
+    
+
+    const mergeSort = () => {
+        console.log(sorting, sorted)
+        if (sorting) return;
+        if (sorted) {
+            MergeSort(resetArray(), functions);
+        }   else {
+            MergeSort(array, functions);
+        }
+        setSorting(true);
     }
 
     return (
@@ -109,6 +133,7 @@ function SortingVisualizer() {
             <button onClick={resetArray}>Generate New Array</button>
             <button onClick={bubbleSort}>Bubble Sort</button>
             <button onClick={quickSort}>Quick Sort</button>
+            <button onClick={mergeSort}>Merge Sort</button>
 
             <div style={{ height: '100px' }}></div>
 
