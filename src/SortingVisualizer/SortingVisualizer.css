@@ -7,6 +7,61 @@
     box-sizing: border-box;
 }
 
+.top-bar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 20vh;
+    width: 100vw;
+    overflow: hidden;
+}
+/* Title */
+.title {
+    font-family: 'Source Code Pro';
+    font-size: 28px;
+    height: 5vh;
+    width: fit-content;
+    text-align: Left;
+    color: white;
+    margin: 15px;
+    margin-left: 1vw;
+}
+
+/* Buttons */
+.control-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: fit-content;
+    margin: 10px;
+    margin-top: 20px;
+    margin-left: 1vw;
+}
+button {
+    font-family: 'Source Code Pro';
+    background-color: #181818;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    border-radius: 10px;
+}
+button:hover {
+    background-color: #3e3e3e;
+    color: white;
+}
+
+.background {
+    background-color: #1e1e1e;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
 /* Default Flexbox */
 .flexbox {
     display: flex;
@@ -17,14 +72,27 @@
 
 /* Sorting Algorithm Display Area */
 /* Container for array bars*/
+.array-display-container {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    margin-left: 1vw;
+    height: 78vh;
+    width: 98vw;
+    background-color: #181818;
+    border-radius: 20px;
+    overflow: hidden;
+}
 .array-container {
     display: flex;
     flex-direction: row;
     align-items: end;
     justify-content: center;
-    height: 500px;
-    width: 80vw;
-    background-color: lightblue;
+    height: 98%;
+    width: 100%;
+    margin-bottom: 0%;
+    background-color: #181818;
 }
 
 /* Individual array bars */
@@ -33,5 +101,6 @@
     width: 50px;
     margin: 0 1px;
     display: inline-block;
-    background-color: black;
+    background-color: whitesmoke;
+    border-radius: 5px;
 }

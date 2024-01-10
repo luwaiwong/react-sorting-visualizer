@@ -12,7 +12,7 @@ import MergeSort from '../SortingAlgorithms/MergeSort';
 const NUMBER_OF_ARRAY_BARS = 50;
 const MIN_HEIGHT = 50;
 const MAX_HEIGHT = 1000;
-export const arraySpeed = 100;
+export const arraySpeed = 50;
 
 // Variables
 let sorted = false;
@@ -29,8 +29,7 @@ const generateRandomArray = () => {
         let item = new Item(randomIntFromInterval(MIN_HEIGHT, MAX_HEIGHT));
         n.push(item);
     }
-    return n
-};
+    return n };
 
 const generateArray = () => {
     let n = [];
@@ -62,7 +61,7 @@ export async function finishSort(array, functions) {
     }
     functions.setArray([...array]);
     for (let i = 0; i < array.length; i++) {
-        array[i].wasSwapped();
+        array[i].wasCompared();
         functions.setArray([...array]);
         // Wait Timer
         await new Promise((resolve) =>
@@ -86,7 +85,7 @@ function SortingVisualizer() {
 
         setSorted(false);
         let a = generateRandomSymetricArray();
-        setArray([a]);
+        setArray([...a]);
         return a;
     }
 
@@ -129,15 +128,22 @@ function SortingVisualizer() {
     }
 
     return (
-        <div >
-            <button onClick={resetArray}>Generate New Array</button>
-            <button onClick={bubbleSort}>Bubble Sort</button>
-            <button onClick={quickSort}>Quick Sort</button>
-            <button onClick={mergeSort}>Merge Sort</button>
+        <div className='background'>
+            <div className='top-bar'>
+                <div className='title'>
+                    
+                    <h1 >Sorting Algorithms Visualizer</h1>
+                </div>
+                <div className="control-panel">
+                    <button onClick={resetArray}>Sort</button>
+                    <button onClick={resetArray}>Shuffle</button>
+                    <button onClick={bubbleSort}>Bubble</button>
+                    <button onClick={quickSort}>Quick</button>
+                    <button onClick={mergeSort}>Merge</button>
+                </div>
+            </div>
 
-            <div style={{ height: '100px' }}></div>
-
-            <div className='flexbox'>
+            <div className='array-display-container'>
                 {/* Sorting Algorithm Array Display */}
                 <div className='array-container'>
                     {
@@ -148,7 +154,7 @@ function SortingVisualizer() {
                                 style={{
                                     backgroundColor: item.color,
                                     // Sets height and width to a percentage of the total height and width of the array container
-                                    height: (item.value / MAX_HEIGHT) * 100 + '%',
+                                    height: (item.value / MAX_HEIGHT) * 100 + (1/NUMBER_OF_ARRAY_BARS) * 100 + '%',
                                     width: (1 / NUMBER_OF_ARRAY_BARS) * 100 + '%',
                                 }}>
                             </div>
