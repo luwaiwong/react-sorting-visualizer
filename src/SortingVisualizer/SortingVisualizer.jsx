@@ -1,18 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
+
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 import './SortingVisualizer.css';
 
 import Item from '../SortingAlgorithms/Item';
-
 // Sorting Algorithms
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import QuickSort from '../SortingAlgorithms/QuickSort';
 import MergeSort from '../SortingAlgorithms/MergeSort';
+import { FaGithub } from 'react-icons/fa';
+import { MdHome, MdHomeFilled } from 'react-icons/md';
 
 // Constants
-const NUMBER_OF_ARRAY_BARS = 50;
+const NUMBER_OF_ARRAY_BARS = 30;
 const MIN_HEIGHT = 50;
 const MAX_HEIGHT = 1000;
-export const arraySpeed = 50;
+export const arraySpeed = 3;
 
 // Variables
 let sorted = false;
@@ -127,6 +132,14 @@ function SortingVisualizer() {
         setSorting(true);
     }
 
+    const onChangeSize = (value) => {
+        NUMBER_OF_ARRAY_BARS = value;
+        resetArray();
+    }
+
+    const onChangeSpeed = (value) => {
+        // arraySpeed = 30-value;
+    }
     return (
         <div className='background'>
             <div className='top-bar'>
@@ -137,12 +150,32 @@ function SortingVisualizer() {
             </div>
 
             <div className='content-container'>
-                <div className="control-panel">
-                    <button onClick={resetArray}>Shuffle</button>
-                    <h1 className="button-section">Algorithms</h1>
-                    <button onClick={bubbleSort}>Bubble</button>
-                    <button onClick={quickSort}>Quick</button>
-                    <button onClick={mergeSort}>Merge</button>
+                <div className="left-panel">
+                    <div className="control-panel">
+                        
+                        <button onClick={resetArray}>Shuffle</button>
+                        {/* <p className="slider-title">Speed</p>
+                        <Slider defaultValue={0}
+                            min={0}
+                            max={30}
+                            onChangeComplete={onChangeSpeed}
+                        /> */}
+                        <p className="slider-title">Size</p>
+                        <Slider defaultValue={40}
+                            min={10}
+                            max={350}
+                            onChangeComplete={onChangeSize}
+                        />
+                        <h1 className="button-section-title">Algorithms</h1>
+                        <button onClick={bubbleSort}>Bubble</button>
+                        <button onClick={quickSort}>Quick</button>
+                        <button onClick={mergeSort}>Merge</button>
+                    </div>
+                    <div className='bottom-section'>
+                        {/* <Icon className='github-icon' onClick={() => window.open('')} /> */}
+                        <MdHome className='home-icon' onClick={() => window.open('https://www.luwai.dev')} />
+                        <FaGithub className='github-icon' onClick={() => window.open('https://github.com/luwaiwong/react-sorting-visualizer')} />
+                    </div>
                 </div>
                 <div className='array-display-container'>
                     {/* Sorting Algorithm Array Display */}

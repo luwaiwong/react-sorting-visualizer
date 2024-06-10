@@ -33,28 +33,34 @@
     width: fit-content;
     text-align: Left;
     color: white;
-    margin: 15px;
     margin-left: 1vw;
+    margin-top: 1vh;
 }
 
 /* Buttons */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: left;
+    height: 100%;
+    width: fit-content;
+    margin-left: 1vw;
+}
 .control-panel {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: left;
     height: 100%;
-    width: fit-content;
-    margin-left: 1vw;
 }
+
 button {
     font-family: "Space Grotesk";
     background-color: #3b4252;
     color: white;
     border: none;
     padding: 10px 20px;
-    /* margin-right: 10px;
-     */
     margin-bottom: 10px;
     text-align: center;
     text-decoration: none;
@@ -70,8 +76,20 @@ button:hover {
     background-color: #5E81AC;
     color: white;
 }
+.slider-title {
+    font-family: "Space Grotesk";
+    font-size: 26px;
+    color: white;
+    font-weight: 500;
 
-.button-section{
+    width: 100%;
+    align-items: center;
+
+    margin-top: 10px;
+
+
+}
+.button-section-title{
     font-family: "Space Grotesk";
     font-size: 33px;
     color: white;font-weight: 700;
@@ -80,6 +98,17 @@ button:hover {
     margin-bottom: 10px;
 
 }
+
+.button-section-title{
+    font-family: "Space Grotesk";
+    font-size: 33px;
+    color: white;font-weight: 700;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+}
+
 
 .background {
     background-color: #2e3440;
@@ -106,7 +135,7 @@ button:hover {
     height: 100%;
     width: 98vw;
     background-color: #3b4252;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
 }
 .array-container {
@@ -128,4 +157,39 @@ button:hover {
     display: inline-block;
     background-color: whitesmoke;
     border-radius: 5px;
+}
+
+/* Backlink section */
+.bottom-section {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    
+    margin-bottom: 20px;
+
+}
+
+.icon {
+    height: 50px;
+    width: 50px;
+}
+.home-icon {
+    height: 60px;
+    width: 60px;
+    color: #4c566a;
+}
+.home-icon:hover {
+    color: #5E81AC;
+    cursor: pointer;
+}
+.github-icon {
+    height: 50px;
+    width: 50px;
+    color: #4c566a;
+}.github-icon:hover {
+    color: #5E81AC;
+    cursor: pointer;
 }
