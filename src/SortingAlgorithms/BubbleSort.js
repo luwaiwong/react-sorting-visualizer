@@ -9,6 +9,7 @@ export default async function bubblesort(array, functions) {
       // Set colors
       sorted[j - 1].wasCompared();
       sorted[j].wasCompared();
+
       if (sorted[j - 1].value > sorted[j].value) {
         // Do swap
         let temp = sorted[j - 1];
@@ -17,10 +18,12 @@ export default async function bubblesort(array, functions) {
 
         // Set colors
         sorted[j].wasSwapped();
-
-        // Set array in main component
-        setArray([...sorted]);
+        // sorted[j - 1].wasSwapped();
       }
+
+      // Set array in main component
+      setArray([...sorted]);
+
       // Wait Timer
       await new Promise((resolve) =>
         setTimeout(() => {

@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <style>
         @import
-        url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+        url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
       </style>
       <SortingVisualizer></SortingVisualizer>
     </div>

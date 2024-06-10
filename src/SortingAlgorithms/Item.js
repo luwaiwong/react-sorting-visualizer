@@ -1,6 +1,6 @@
-const DEFAULT_COLOR = "black";
-const COMPARED_COLOR = "green";
-const SWAPPED_COLOR = "red";
+const DEFAULT_COLOR = "#5E81AC";
+const COMPARED_COLOR = "#A3BE8C";
+const SWAPPED_COLOR = "#BF616A";
 
 export default class Item {
   constructor(value) {

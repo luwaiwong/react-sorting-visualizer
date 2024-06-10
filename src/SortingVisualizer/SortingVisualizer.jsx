@@ -134,32 +134,34 @@ function SortingVisualizer() {
                     
                     <h1 >Sorting Algorithms Visualizer</h1>
                 </div>
+            </div>
+
+            <div className='content-container'>
                 <div className="control-panel">
-                    <button onClick={resetArray}>Sort</button>
                     <button onClick={resetArray}>Shuffle</button>
+                    <h1 className="button-section">Algorithms</h1>
                     <button onClick={bubbleSort}>Bubble</button>
                     <button onClick={quickSort}>Quick</button>
                     <button onClick={mergeSort}>Merge</button>
                 </div>
-            </div>
-
-            <div className='array-display-container'>
-                {/* Sorting Algorithm Array Display */}
-                <div className='array-container'>
-                    {
-                        array.map((item, idx) => (
-                            <div
-                                className='array-bar'
-                                key={idx}
-                                style={{
-                                    backgroundColor: item.color,
-                                    // Sets height and width to a percentage of the total height and width of the array container
-                                    height: (item.value / MAX_HEIGHT) * 100 + (1/NUMBER_OF_ARRAY_BARS) * 100 + '%',
-                                    width: (1 / NUMBER_OF_ARRAY_BARS) * 100 + '%',
-                                }}>
-                            </div>
-                        ))
-                    }
+                <div className='array-display-container'>
+                    {/* Sorting Algorithm Array Display */}
+                    <div className='array-container'>
+                        {
+                            array.map((item, idx) => (
+                                <div
+                                    className='array-bar'
+                                    key={idx}
+                                    style={{
+                                        backgroundColor: item.color,
+                                        // Sets height and width to a percentage of the total height and width of the array container
+                                        height: (item.value / MAX_HEIGHT) * 100 + (1/NUMBER_OF_ARRAY_BARS) * 100 + '%',
+                                        width: (1 / NUMBER_OF_ARRAY_BARS) * 100 + '%',
+                                    }}>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </div>
