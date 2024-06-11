@@ -10,8 +10,8 @@ import Item from '../SortingAlgorithms/Item';
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import QuickSort from '../SortingAlgorithms/QuickSort';
 import MergeSort from '../SortingAlgorithms/MergeSort';
-import { FaGithub } from 'react-icons/fa';
-import { MdHome, MdHomeFilled } from 'react-icons/md';
+// import { FaGithub } from 'react-icons/fa';
+// import { MdHome, MdHomeFilled } from 'react-icons/md';
 
 // Constants
 const NUMBER_OF_ARRAY_BARS = 30;
@@ -173,8 +173,8 @@ function SortingVisualizer() {
                     </div>
                     <div className='bottom-section'>
                         {/* <Icon className='github-icon' onClick={() => window.open('')} /> */}
-                        <MdHome className='home-icon' onClick={() => window.open('https://www.luwai.dev')} />
-                        <FaGithub className='github-icon' onClick={() => window.open('https://github.com/luwaiwong/react-sorting-visualizer')} />
+                        {/* <MdHome className='home-icon' onClick={() => window.open('https://www.luwai.dev')} />
+                        <FaGithub className='github-icon' onClick={() => window.open('https://github.com/luwaiwong/react-sorting-visualizer')} /> */}
                     </div>
                 </div>
                 <div className='array-display-container'>
