@@ -28,7 +28,7 @@ export default async function bubblesort(array, functions) {
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, arraySpeed)
+        }, arraySpeed / 2)
       );
       // Reset colors
       sorted[j - 1].resetColor();
