@@ -10,16 +10,19 @@ import Item from '../SortingAlgorithms/Item';
 import BubbleSort from '../SortingAlgorithms/BubbleSort';
 import QuickSort from '../SortingAlgorithms/QuickSort';
 import MergeSort from '../SortingAlgorithms/MergeSort';
+import SelectionSort from '../SortingAlgorithms/SelectionSort';
+import InsertionSort from '../SortingAlgorithms/InsertionSort';
 
 // Constants
 const NUMBER_OF_ARRAY_BARS = 30;
+const CHANGED_ARRAY_BARS = 30;
 const MIN_HEIGHT = 50;
 const MAX_HEIGHT = 1000;
-export const arraySpeed = 3;
+// export const arraySpeed = 3;
 
 // Variables
 let sorted = false;
-
+let worker = null;
 
 //#region Generating random lists
 function randomIntFromInterval(min, max) {
@@ -70,7 +73,7 @@ export async function finishSort(array, functions) {
         await new Promise((resolve) =>
         setTimeout(() => {
             resolve();
-        }, arraySpeed)
+        }, functions.arraySpeed)
         );
     }
     functions.setSorting(false);
@@ -78,14 +81,21 @@ export async function finishSort(array, functions) {
 }
 //#region Main Function
 function SortingVisualizer() {
+    
     const [array, setArray] = useState(generateArray);
-    const [sorting, setSorting] = useState(false);
+    const [arraySpeed, setArraySpeed] = useState(0)
+    const [curSort, setCur] = useState(0);
     const [sorted, setSorted] = useState(true);
-    const functions = { setArray, setSorting, setSorted};
+    const [sorting, setSorting] = useState(false);
+
+    const functions = { setArray, setSorted, arraySpeed, setSorting};
 
     const resetArray = () => {
         if (sorting) return;
 
+        if (CHANGED_ARRAY_BARS !== NUMBER_OF_ARRAY_BARS) {
+            NUMBER_OF_ARRAY_BARS = CHANGED_ARRAY_BARS;
+        }
         setSorted(false);
         let a = generateRandomSymetricArray();
         setArray([...a]);
@@ -93,21 +103,21 @@ function SortingVisualizer() {
     }
 
     const quickSort = () =>  {
-        console.log(sorting, sorted)
         if (sorting) return;
-        
+        setSorting(true);
+        setCur(2000)
         if (sorted) {
             QuickSort(resetArray(), functions);
         } else {
             QuickSort(array, functions);
         }
         
-        setSorting(true);
+        setCur(2000)
     }
 
     const bubbleSort = () => {
-        console.log(sorting, sorted)
         if (sorting) return;
+        setSorting(true);
         
         if (sorted) {
             BubbleSort(resetArray(), functions);
@@ -115,28 +125,56 @@ function SortingVisualizer() {
         else {
             BubbleSort(array, functions);
         }
-        setSorting(true);
+        setCur(curSort+1)
     }
     
 
     const mergeSort = () => {
-        console.log(sorting, sorted)
+        // console.log(sorting, sorted)
         if (sorting) return;
+        setSorting(true);
+
         if (sorted) {
             MergeSort(resetArray(), functions);
         }   else {
             MergeSort(array, functions);
         }
+        setCur(curSort+1)
+    }
+
+
+    const selectionSort = () => {
+        // console.log(sorting, sorted)
+        if (sorting) return;
         setSorting(true);
+
+        if (sorted) {
+            SelectionSort(resetArray(), functions);
+        }   else {
+            SelectionSort(array, functions);
+        }
+        setCur(curSort+1)
+    }
+
+    const insertionSort = () => {
+        if (sorting) return;
+        setSorting(true);
+
+        if (sorted) {
+            InsertionSort(resetArray(), functions);
+        } else {
+            InsertionSort(array, functions);
+        }
+        setCur(curSort+1)
     }
 
     const onChangeSize = (value) => {
-        NUMBER_OF_ARRAY_BARS = value;
+        CHANGED_ARRAY_BARS = value;
         resetArray();
     }
 
     const onChangeSpeed = (value) => {
-        // arraySpeed = 30-value;
+        setArraySpeed(50-value);
     }
     return (
         <div className='background'>
@@ -151,6 +189,12 @@ function SortingVisualizer() {
                 <div className="left-panel">
                     <div className="control-panel">
                         
+                        {/* <p className="slider-title">Speed</p>
+                        <Slider defaultValue={0}
+                            min={0}
+                            max={30}
+                            onChangeComplete={onChangeSpeed}
+                        /> */}
                         <button onClick={resetArray}>Shuffle</button>
                         {/* <p className="slider-title">Speed</p>
                         <Slider defaultValue={0}
@@ -164,9 +208,18 @@ function SortingVisualizer() {
                             max={350}
                             onChangeComplete={onChangeSize}
                         />
+
+                        <p className="slider-title">Speed</p>
+                        <Slider defaultValue={50}
+                            min={0}
+                            max={50}
+                            onChangeComplete={onChangeSpeed}
+                        />
                         <h1 className="button-section-title">Algorithms</h1>
                         <button onClick={quickSort}>Quick</button>
                         <button onClick={mergeSort}>Merge</button>
+                        <button onClick={selectionSort}>Selection</button>
+                        <button onClick={insertionSort}>Insertion</button>
                         <button onClick={bubbleSort}>Bubble</button>
                     </div>
                     <div className='bottom-section'>

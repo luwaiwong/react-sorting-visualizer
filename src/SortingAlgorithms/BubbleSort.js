@@ -9,7 +9,6 @@ export default async function bubblesort(array, functions) {
       // Set colors
       sorted[j - 1].wasCompared();
       sorted[j].wasCompared();
-
       if (sorted[j - 1].value > sorted[j].value) {
         // Do swap
         let temp = sorted[j - 1];
@@ -28,7 +27,7 @@ export default async function bubblesort(array, functions) {
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, arraySpeed / 2)
+        }, arraySpeed / 4)
       );
       // Reset colors
       sorted[j - 1].resetColor();

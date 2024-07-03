@@ -1,5 +1,5 @@
 import Item from "./Item";
-import { arraySpeed, finishSort } from "../SortingVisualizer/SortingVisualizer";
+import { finishSort } from "../SortingVisualizer/SortingVisualizer";
 
 // Quicksort with choosing the first element as the pivot
 // Time Complexity: O(nlogn) average, O(n^2) worst case
@@ -7,11 +7,11 @@ import { arraySpeed, finishSort } from "../SortingVisualizer/SortingVisualizer";
 
 // The main function that implements QuickSort
 export default async function QuickSort(array, functions) {
-  await partition(array, 0, array.length - 1, functions.setArray);
+  await partition(array, 0, array.length - 1, functions.setArray, functions);
   finishSort(array, functions);
 }
 
-async function partition(array, left, right, setArray) {
+async function partition(array, left, right, setArray, functions) {
   // If left > right, then cannot partition this section
   // just return
   if (left >= right) {
@@ -45,7 +45,7 @@ async function partition(array, left, right, setArray) {
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-      }, arraySpeed)
+      }, functions.arraySpeed)
     );
 
     // Reset colors
@@ -61,6 +61,6 @@ async function partition(array, left, right, setArray) {
   ];
 
   // Partition the left and right side of the pivot
-  await partition(array, pivotPosition, right, setArray);
-  await partition(array, left, pivotPosition - 1, setArray);
+  await partition(array, pivotPosition, right, setArray, functions);
+  await partition(array, left, pivotPosition - 1, setArray, functions);
 }
