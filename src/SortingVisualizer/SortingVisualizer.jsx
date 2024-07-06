@@ -195,7 +195,8 @@ function SortingVisualizer() {
                             max={30}
                             onChangeComplete={onChangeSpeed}
                         /> */}
-                        <button onClick={resetArray}>Shuffle</button>
+                        {sorting ? <button onClick={()=>{window.location.reload()}}>Stop</button>: <button onClick={resetArray}>Shuffle</button>}
+                        
                         {/* <p className="slider-title">Speed</p>
                         <Slider defaultValue={0}
                             min={0}

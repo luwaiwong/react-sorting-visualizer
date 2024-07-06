@@ -42,6 +42,7 @@ export default async function insertionSort(array, functions) {
         );
         sorted[j].resetColor();
         setArray([...sorted]);
+        break;
       }
 
       // console.log("j: ", j);
